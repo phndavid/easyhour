@@ -1,0 +1,69 @@
+﻿<!DOCTYPE HTML>
+<html ng-app = "myApp">
+<head>
+	<title>EasyHour</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
+<body class="container">
+  <h1>EasyHour test</h1>
+   <section>
+       <form class="inline-block">
+           <h4>Add Subject</h4>
+           <label>Name:</label>
+           <input class="form-control" type="text" placeholder="Name" />
+           <label>Credits:</label>
+           <input class="form-control" type="text" placeholder="Credits" />
+        </form>
+        <form class="inline-block">  
+           <h4>Add Group</h4>
+           <label>Id:</label>
+            <input class="form-control" type="text" placeholder="Id" />
+           <label>Name Professor:</label>
+            <input class ="form-control" type="text" placeholder="Name professor" />
+        </form>   
+        <form class="inline-block"> 
+           <h4>Add Classes</h4>
+           <label>Classroom</label>
+            <input class="form-control"  type="text" placeholder="Classroom" />
+           <label>Day</label>
+            <input class="form-control" type="text" placeholder="Day" />
+           <label>Start time:</label>
+            <input class="form-control" type="text" placeholder="Start time" />
+           <label>End time: </label>
+            <input class="form-control" type="text" placeholder="End time" />
+       </form>
+       <button class="btn btn-info" onclick="EasyHour()">Create shedules</button>
+   </section>
+  <hr>
+  <section ng-controller="scheduleController">  
+	  <button class="btn btn-info" ng-click = "getSchedules()">Draw shedules</button>
+	  	<div ng-repeat = "(index,a) in schedules">
+	  		<h3>{{index+1}}-Easy</h3>	
+	  		<div ng-repeat = "(i,h) in schedules[index]">
+	  			<h4>----{{index+1}}.{{i+1}}-Schedule</h4>
+	  			<div class="block" ng-repeat ="g in h.groups">
+		  				<div class="inline-block" ng-repeat ="c in g.classes">
+		  					<div class="row days"><h1>{{c.day}}</h1></div>
+		  					<div class="row course">
+				                <span class="slot circle">
+				                    <p>
+				                        <p><b>{{g.subject.name}}</b></p>
+				                        <p>grupo: {{g.id}}</p>
+				                        <p>{{formatHour(c.hInit)}}-{{formatHour(c.hEnd)}}</p>
+				                        <p>{{g.nameProfessor}}</p>
+				                    </p>
+				                </span>
+				            </div>
+		  				</div>
+	  			</div>
+	  		</div>
+	  	</div>
+	</section>
+</body>
+<script type="text/javascript" src ="js/model/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="js/model/angular.js"></script>
+<script type="text/javascript" src="js/model/model.js"></script></script>
+</html>
