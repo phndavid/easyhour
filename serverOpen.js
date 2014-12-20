@@ -3,9 +3,7 @@
 var express = require('express');
 var fs      = require('fs');
 
-var app = express()
 
-app.use(express.static(__dirname+'/public'));
 /**
  *  Define the sample application.
  */
@@ -158,3 +156,4 @@ var SampleApp = function() {
 var zapp = new SampleApp();
 zapp.initialize();
 zapp.start();
+
